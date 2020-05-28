@@ -31,6 +31,12 @@ Verification Condition Generator
 
 ## Run
 
+### Generation
+
 `java gen/src/Main input_files/<FILE_NAME>.sl`
 
 `dot -Tpng output_files/<FILE_NAME>.dot -o output_files/<FILE_NAME>.png`
+
+### Validation
+
+`z3 output_files/<FILE_NAME>`
