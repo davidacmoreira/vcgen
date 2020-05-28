@@ -1,0 +1,45 @@
+module src.g
+imports int String
+abstract syntax
+
+Instrucao 		= Atribuicao(Id:String,Expressao:Expressao)
+				| If(Condicao:Expressao,Instrucao1:Instrucao,Instrucao2:Instrucao)
+				| While(Condicao:Expressao,Instrucao:Instrucao)
+				| Cod(Instrucao:Instrucao)
+				| Exp(Expressao:Expressao)
+				| SeqInstrucao(Instrucao*)
+				| Pre(Anot:Anotacoes)
+				| Postn(Anot:Anotacoes)
+				| Poste(Anot:Anotacoes)
+				| Inv(Anot:Anotacoes)
+
+Expressao 		= ExpNum(Exp1:Expressao,op:OpNum,Exp2:Expressao)
+				| Id(Id:String)
+				| Pos(Expressao:Expressao)
+				| Neg(Expressao:Expressao)
+				| Nao(Expressao:Expressao)
+				| Condicional(Condicao:Expressao,Exp1:Expressao,Exp2:Expressao)
+				| Int(Int:int)
+				| Ou(Cond1:Expressao,Cond2:Expressao)
+				| E(Cond1:Expressao,Cond2:Expressao)
+				| Comp(Exp1:Expressao,OpComp:OpComp,Exp2:Expressao)
+				| Expressoes(Expressao*)
+
+DefTipo 		= DInt()
+
+Anotacoes 		= ListaAnot(Anotacoes*)
+				| Atr(Instrucao:Instrucao)
+				| Cond(Expressao:Expressao)
+
+OpNum 			= Mais()
+				| Vezes()
+				| Divide()
+				| Menos()
+				| Mod()
+
+OpComp 			= Maior()
+				| Menor()
+				| MaiorQ()
+				| MenorQ()
+				| Dif()
+				| Igual()
